@@ -1,8 +1,9 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import logo from './logo.svg';
-import './App.css';
 import Banner from './components/Banner';
-import CourseList from './components/CourseList';
+import CourseCards from './components/CourseCards';
+
 
 const schedule = {
   "title": "CS Courses for 2018-2019",
@@ -35,9 +36,9 @@ const schedule = {
 };
 
 const App = () => (
-  <div>
+  <div className="container" >
     <Banner title={schedule.title} /> 
-    { Object.entries(schedule.courses).map(([id, course]) => <CourseList key={id} course={course} />) }
+    < CourseCards courses={Object.values(schedule.courses)} />
   </div>
 );
 
