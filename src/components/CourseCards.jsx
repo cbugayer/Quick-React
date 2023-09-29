@@ -1,10 +1,8 @@
-import CourseCard from './CourseCard';
 import './CourseCards.css';
+import TermPage from './TermPage';
 
 const CourseCards = ({ courses }) => (
-    <div className="product-list">
-        { courses.map(course => <CourseCard key={course.id} course={course} />) }
-    </div>
+    TermPage(courses)
 );
 
 export default CourseCards;
