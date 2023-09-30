@@ -4,3 +4,8 @@
     height: 15vw;
     object-fit: cover;
   }
+
+.product .selected {
+  background-color:lemonchiffon;
+  color: green;
+}

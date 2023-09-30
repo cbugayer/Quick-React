@@ -5,6 +5,7 @@ import Banner from './components/Banner';
 import CourseCards from './components/CourseCards';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useJsonQuery } from './utilities/fetch';
+import SelectedPage from './components/SelectedPage';
 
 const Main = () => {
   const [data, isLoading, error] = useJsonQuery('https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php');
@@ -16,7 +17,7 @@ const Main = () => {
   return (
   <>
     <Banner title={data.title} />
-    < CourseCards courses={Object.values(data.courses)} />
+    < SelectedPage courses={Object.entries(data.courses)} />
   </>
   );
 }
