@@ -19,7 +19,7 @@ const Term = ({selection, courses, selected, toggleSelected}) => (
 
 const TermPage = (courses, selected, toggleSelected ) => {
   const [selection, setSelection] = useState(() => "Fall");
-  return (console.log(courses),
+  return (
     <div>
       <TermSelector 
         selection={selection} 
