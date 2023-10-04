@@ -9,3 +9,8 @@
   background-color:lemonchiffon;
   color: green;
 }
+
+.product .unselectable {
+  background-color:lightgray;
+  color: gray;
+}

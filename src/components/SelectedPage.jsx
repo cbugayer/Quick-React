@@ -2,9 +2,10 @@ import { useState } from 'react';
 import Modal from './Modal';
 import Cart from './Cart';
 import CourseCards from "./CourseCards";
+import Unselectables from "./Unselectables";
 import './SelectedPage.css';
 
-const SelectedPage = ({courses}) => {
+const SelectedPage = ({courses, unselectables}) => {
   const [selected, setSelected] = useState([]);
   const [open, setOpen] = useState(false);
 
@@ -27,7 +28,11 @@ const SelectedPage = ({courses}) => {
         
         <Cart selected={courses.filter(x => selected.includes(x[0]))} />
       </Modal>
-      <CourseCards courses={courses} selected={selected} toggleSelected={toggleSelected} />
+      <Unselectables 
+        courses={courses} 
+        selected={selected}
+        toggleSelected={toggleSelected} 
+      />
     </div>
     
   );
