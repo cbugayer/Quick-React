@@ -5,7 +5,7 @@ import CourseCards from "./CourseCards";
 import Unselectables from "./Unselectables";
 import './SelectedPage.css';
 
-const SelectedPage = ({courses, unselectables}) => {
+const SelectedPage = ({courses}) => {
   const [selected, setSelected] = useState([]);
   const [open, setOpen] = useState(false);
 
@@ -17,6 +17,7 @@ const SelectedPage = ({courses, unselectables}) => {
     ? selected.filter(x => x !== item)
     : [...selected, item]
   );
+  console.log('Selected courses:', selected);
 
   return (
     <div>
@@ -24,8 +25,7 @@ const SelectedPage = ({courses, unselectables}) => {
         <i className="bi bi-cart-fill"></i>
         Class Cart
       </button>
-      <Modal open={open} close={closeModal}>
-        
+      <Modal open={open} close={closeModal}> 
         <Cart selected={courses.filter(x => selected.includes(x[0]))} />
       </Modal>
       <Unselectables 

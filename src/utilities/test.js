@@ -31,7 +31,13 @@ const hoursOverlap = ({hours1, hours2}) => {
     return beforeTime(start1, end2) && beforeTime(start2, end1);
 }
 
-console.log(hoursOverlap({ hours1: '9:00-10:00', hours2: '10:00-11:00' })); // False
-console.log(hoursOverlap({ hours1: '9:00-10:00', hours2: '9:30-10:30' })); // True
-console.log(hoursOverlap({ hours1: '9:00-10:00', hours2: '9:00-10:00' })); // True
-console.log(hoursOverlap({ hours1: '9:00-10:00', hours2: '9:00-9:30' })); // True
+// console.log(hoursOverlap({ hours1: '9:00-10:00', hours2: '10:00-11:00' })); // False
+// console.log(hoursOverlap({ hours1: '9:00-10:00', hours2: '9:30-10:30' })); // True
+// console.log(hoursOverlap({ hours1: '9:00-10:00', hours2: '9:00-10:00' })); // True
+// console.log(hoursOverlap({ hours1: '9:00-10:00', hours2: '9:00-9:30' })); // True
+
+const termsOverlap = ({term1, term2}) => (term1 === term2);
+
+// console.log(termsOverlap({ term1: 'Fall', term2: 'Spring' })); // False
+// console.log(termsOverlap({ term1: 'Fall', term2: 'Fall' })); // True
+// console.log(termsOverlap({ term1: 'Spring', term2: 'Spring' })); // True

@@ -3,11 +3,11 @@ import overlaps from "./overlaps";
 const checkOverlaps = (course, courses) => {
     return courses.filter((c) => overlaps({
         term1: course.term,
-        days1: course.days,
-        hours1: course.hours,
-        term2: c.term,
-        days2: c.days,
-        hours2: c.hours,
+        days1: course.meets.split(' ')[0],
+        hours1: course.meets.split(' ')[1],
+        term2: c[1].term,
+        days2: c[1].meets.split(' ')[0],
+        hours2: c[1].meets.split(' ')[1],
     }));
 };
 

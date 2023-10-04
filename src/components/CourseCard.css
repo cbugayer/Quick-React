@@ -5,12 +5,12 @@
     object-fit: cover;
   }
 
-.product .selected {
-  background-color:lemonchiffon;
-  color: green;
-}
-
 .product .unselectable {
   background-color:lightgray;
   color: gray;
+}
+
+.product .selected {
+  background-color:lemonchiffon;
+  color: green;
 }

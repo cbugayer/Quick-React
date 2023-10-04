@@ -2,8 +2,9 @@ import { useState } from "react";
 import TermSelector from "./TermSelector";
 import CourseCard from "./CourseCard";
 
-const Term = ({selection, courses, selected, unselectables, toggleSelected}) => (
-    <div className="product-list">
+const Term = ({selection, courses, selected, unselectables, toggleSelected, toggleUnselectables}) => (
+  console.log("Unselectables:", unselectables),
+    <div className="product-list"> 
         { courses.filter(course => course[1].term === selection)
         .map(course => (
         <CourseCard 
@@ -11,14 +12,15 @@ const Term = ({selection, courses, selected, unselectables, toggleSelected}) => 
           course={course[1]} 
           selected={selected} 
           unselectables={unselectables}
-          toggleSelected={toggleSelected} />))}
+          toggleSelected={toggleSelected} 
+          toggleUnselectables={toggleUnselectables}/>))}
     </div>
 );
 
 // selection refers to the term selected by the user
 // selected refers to the courses selected by the user
 
-const TermPage = (courses, selected, unselectables, toggleSelected ) => {
+const TermPage = (courses, selected, unselectables, toggleSelected, toggleUnselectables ) => {
   const [selection, setSelection] = useState(() => "Fall");
   return (
     <div>
@@ -33,6 +35,7 @@ const TermPage = (courses, selected, unselectables, toggleSelected ) => {
         selected={selected} 
         unselectables={unselectables}
         toggleSelected={toggleSelected} 
+        toggleUnselectables={toggleUnselectables}
       />
     </div>
   );

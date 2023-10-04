@@ -1,7 +1,17 @@
 import './CourseCard.css';
 
-const CourseCard = ({id, course, selected, unselectables, toggleSelected}) => (
-    <div className="product card m-1 p-2" onClick={() => toggleSelected(id)}>
+const CourseCard = ({id, 
+                    course, 
+                    selected, 
+                    unselectables, 
+                    toggleSelected, 
+                    toggleUnselectables}) => (
+    // if the course is selected, clicking will unselect it and call toggleUnselectables
+    // if the course is unselectable, clicking will do nothing
+    <div className="product card m-1 p-2" onClick={() => 
+        {unselectables.includes(id)
+        ? null
+        : (toggleSelected(id), toggleUnselectables(id))}}>
         <div className= {`card-body 
                             ${selected.includes(id) ? 'selected' : ''} 
                             ${unselectables.includes(id) ? 'unselectable' : ''}`}>
