@@ -8,6 +8,7 @@ const Term = ({selection, courses, selected, unselectables, toggleSelected, togg
         { courses.filter(course => course[1].term === selection)
         .map(course => (
         <CourseCard 
+          key={course[0]}
           id={course[0]}
           course={course[1]} 
           selected={selected} 

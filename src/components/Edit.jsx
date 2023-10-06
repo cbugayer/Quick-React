@@ -1,14 +1,15 @@
+import CourseEditor from '../CourseEditor';
+import { BrowserRouter } from "react-router-dom";
+
 import './Edit.css';
 
-const Cart = ({id, course}) => (
-  <div className="edit">
-    {
-        <div key={course}>
-            {`CS ${course.number}:\n${course.title}\n${course.meets}`}
-            {`\n-----------------------------`}
+
+const Edit = ({id, course}) => (
+    <BrowserRouter>
+        <div className="edit">
+            {CourseEditor(id, course)}
         </div>
-    }
-  </div>
+    </BrowserRouter>
 );
 
-export default Cart;
+export default Edit;

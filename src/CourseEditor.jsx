@@ -1,18 +1,25 @@
-import { useDbUpdate } from '../utilities/firebase';
-import { useFormData } from '../utilities/useFormData';
+import { useDbUpdate } from './utilities/firebase';
+import { useFormData } from './utilities/useFormData';
+import { useNavigate } from "react-router-dom";
 
 const validateCourseData = (key, val) => {
   switch (key) {
     case 'term': 
-        return ['Fall', 'Spring', 'Summer', 'Winter'].includes(val)
+        return ['Fall', 'Spring', 'Summer', 'Winter'].includes(val) && val.length > 1
         ? '' 
         : 'must be Fall, Winter, Spring, or, Summer';
     case 'number':
-        return /^[0-9-]+$/.test(val) ? '' : 'must contain only numbers and hyphens';
+        return /^[0-9-]+$/.test(val) && val.length > 1
+        ? '' 
+        : 'must contain only numbers and hyphens';
     case 'title':
-        return /^[MTuWThF0-9-]+$/.test(val) ? '' : 'must contain only numbers, letters, and hyphens';
+        return /^[a-zA-Z0-9 ,.'-]+$/.test(val) & val.length > 1
+        ? ''
+        : 'must contain only letters, numbers, and punctuation';
     case 'meets':
-
+        return /^[MTuWThF0-9: ]+$/.test(val) && val.length > 1
+        ? '' 
+        : 'must contain only numbers, letters, and colons';
     default: return '';
   }
 };
@@ -37,9 +44,9 @@ const ButtonBar = ({message, disabled}) => {
   );
 };
 
-const UserEditor = ({user}) => {
-  const [update, result] = useDbUpdate(`/users/${user.id}`);
-  const [state, change] = useFormData(validateUserData, user);
+const CourseEditor = ({id, course}) => {
+  const [update, result] = useDbUpdate(`/courses/${id}`); // SOLVE THIS LINE
+  const [state, change] = useFormData(validateCourseData, course);
   const submit = (evt) => {
     evt.preventDefault();
     if (!state.errors) {
@@ -49,12 +56,13 @@ const UserEditor = ({user}) => {
 
   return (
     <form onSubmit={submit} noValidate className={state.errors ? 'was-validated' : null}>
-      <InputField name="firstName" text="First Name" state={state} change={change} />
-      <InputField name="lastName" text="Last Name" state={state} change={change} />
-      <InputField name="email" text="Email" state={state} change={change} />
+      <InputField name="term" text="Term" state={state} change={change} />
+      <InputField name="number" text="Number" state={state} change={change} />
+      <InputField name="title" text="Title" state={state} change={change} />
+      <InputField name="meets" text="Meets" state={state} change={change} />
       <ButtonBar message={result?.message} />
     </form>
   )
 };
 
-export default UserEditor;
+export default CourseEditor;
