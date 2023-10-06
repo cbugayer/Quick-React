@@ -9,10 +9,10 @@ const validateCourseData = (key, val) => {
         : 'must be Fall, Winter, Spring, or, Summer';
     case 'number':
         return /^[0-9-]+$/.test(val) ? '' : 'must contain only numbers and hyphens';
-    case 'firstName': case 'lastName':
-      return /(^\w\w)/.test(val) ? '' : 'must be least two characters';
-    case 'email':
-      return /^\w+@\w+[.]\w+/.test(val) ? '' : 'must contain name@domain.top-level-domain';
+    case 'title':
+        return /^[MTuWThF0-9-]+$/.test(val) ? '' : 'must contain only numbers, letters, and hyphens';
+    case 'meets':
+
     default: return '';
   }
 };
