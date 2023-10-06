@@ -1,4 +1,10 @@
 import './CourseCard.css';
+import Modal from './Modal';
+import { useState } from 'react';
+
+const [openEdit, setOpenEdit] = useState(false);
+const openEditModal = () => setOpenEdit(true);
+const closeEditModal = () => setOpenEdit(false);
 
 const CourseCard = ({id, 
                     course, 
@@ -6,6 +12,9 @@ const CourseCard = ({id,
                     unselectables, 
                     toggleSelected, 
                     toggleUnselectables}) => (
+
+
+    
     // if the course is selected, clicking will unselect it and call toggleUnselectables
     // if the course is unselectable, clicking will do nothing
     <div className="product card m-1 p-2" onClick={() => 
@@ -19,6 +28,10 @@ const CourseCard = ({id,
             <h6 className="card-text">{ course.title }</h6>
         </div>
         <div className="card-footer">{ course.meets }</div>
+        <button className="btn btn-outline-secondary" onClick={openEditModal}>Edit</button>
+        <Modal open={openEdit} close={closeEditModal}> 
+            <Edit id={id} course={course} />
+        </Modal>
     </div>
 );
 

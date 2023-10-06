@@ -7,10 +7,10 @@ import './SelectedPage.css';
 
 const SelectedPage = ({courses}) => {
   const [selected, setSelected] = useState([]);
-  const [open, setOpen] = useState(false);
+  const [openCart, setCartOpen] = useState(false);
 
-  const openModal = () => setOpen(true);
-  const closeModal = () => setOpen(false);
+  const openCartModal = () => setCartOpen(true);
+  const closeCartModal = () => setCartOpen(false);
 
   const toggleSelected = (item) => setSelected(
     selected.includes(item)
@@ -21,11 +21,11 @@ const SelectedPage = ({courses}) => {
 
   return (
     <div>
-      <button className="btn btn-primary mb-1 p-2" onClick={openModal}>
+      <button className="btn btn-primary mb-1 p-2" onClick={openCartModal}>
         <i className="bi bi-cart-fill"></i>
         Class Cart
       </button>
-      <Modal open={open} close={closeModal}> 
+      <Modal open={openCart} close={closeCartModal}> 
         <Cart selected={courses.filter(x => selected.includes(x[0]))} />
       </Modal>
       <Unselectables 
