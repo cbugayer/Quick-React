@@ -45,7 +45,6 @@ const ButtonBar = ({message, disabled}) => {
 };
 
 const CourseEditor = ({id, course}) => {
-  console.log("something");
   const [update, result] = useDbUpdate(`/courses/${id}`); // SOLVE THIS LINE
   const [state, change] = useFormData(validateCourseData, course);
   console.log("state:", state);
