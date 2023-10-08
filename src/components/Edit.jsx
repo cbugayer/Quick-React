@@ -5,6 +5,8 @@ import './Edit.css';
 
 
 const Edit = ({id, course}) => (
+    // console.log("course:", course),
+    // console.log("id:", id),
     <BrowserRouter>
         <div className="edit">
             {CourseEditor(id, course)}

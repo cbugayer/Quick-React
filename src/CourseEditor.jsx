@@ -17,7 +17,7 @@ const validateCourseData = (key, val) => {
         ? ''
         : 'must contain only letters, numbers, and punctuation';
     case 'meets':
-        return /^[MTuWThF0-9: ]+$/.test(val) && val.length > 1
+        return /^[MTuWThF0-9 :-]+$/.test(val) && val.length > 1
         ? '' 
         : 'must contain only numbers, letters, and colons';
     default: return '';
@@ -45,8 +45,10 @@ const ButtonBar = ({message, disabled}) => {
 };
 
 const CourseEditor = ({id, course}) => {
+  console.log("something");
   const [update, result] = useDbUpdate(`/courses/${id}`); // SOLVE THIS LINE
   const [state, change] = useFormData(validateCourseData, course);
+  console.log("state:", state);
   const submit = (evt) => {
     evt.preventDefault();
     if (!state.errors) {
