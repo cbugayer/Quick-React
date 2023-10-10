@@ -24,7 +24,7 @@ const validateCourseData = (key, val) => {
   }
 };
 
-const InputField = ({name, text, state, change}) => (
+const InputField = ({ name, text, state, change}) => (
   <div className="mb-3">
     <label htmlFor={name} className="form-label">{text}</label>
     <input className="form-control" id={name} name={name} 
@@ -47,6 +47,7 @@ const ButtonBar = ({message, disabled}) => {
 const CourseEditor = ({id, course}) => {
   const [update, result] = useDbUpdate(`/courses/${id}`); // SOLVE THIS LINE
   const [state, change] = useFormData(validateCourseData, course);
+  console.log("course:", course);
   console.log("state:", state);
   const submit = (evt) => {
     evt.preventDefault();

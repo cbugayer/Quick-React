@@ -30,8 +30,9 @@ const CourseCard = ({id,
                     <h6 className="card-text">{ course.title }</h6>
                 </div>
                 <div className="card-footer">{ course.meets }</div>
-                <button className="btn btn-outline-secondary" onClick={openEditModal}>Edit</button>
-            </div>
+                <button className="btn btn-outline-secondary" 
+                        onClick={(e) => {e.stopPropagation(); openEditModal()}}>Edit</button>
+            </div> 
             <div className="product-list">
                 <Modal open={openEdit} close={closeEditModal}> 
                     <Edit id={id} course={course} />
