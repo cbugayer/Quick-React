@@ -1,6 +1,9 @@
 import { useDbUpdate } from './utilities/firebase';
 import { useFormData } from './utilities/useFormData';
 import { useNavigate } from "react-router-dom";
+import Timespan from './components/Timespan';
+
+
 
 const validateCourseData = (key, val) => {
   switch (key) {
@@ -17,9 +20,10 @@ const validateCourseData = (key, val) => {
         ? ''
         : 'must contain only letters, numbers, and punctuation';
     case 'meets':
-        return /^[MTuWThF0-9 :-]+$/.test(val) && val.length > 1
+      console.log("val:", val);
+        return Timespan(val)
         ? '' 
-        : 'must contain only numbers, letters, and colons';
+        : 'must be a valid timespan, e.g. "MWF 10:00-10:50"';
     default: return '';
   }
 };
@@ -47,8 +51,8 @@ const ButtonBar = ({message, disabled}) => {
 const CourseEditor = ({id, course}) => {
   const [update, result] = useDbUpdate(`/courses/${id}`); // SOLVE THIS LINE
   const [state, change] = useFormData(validateCourseData, course);
-  console.log("course:", course);
-  console.log("state:", state);
+  // console.log("course:", course);
+  // console.log("state:", state);
   const submit = (evt) => {
     evt.preventDefault();
     if (!state.errors) {
