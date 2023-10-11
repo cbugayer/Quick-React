@@ -37,12 +37,13 @@ const InputField = ({ name, text, state, change}) => (
   </div>
 );
 
-const ButtonBar = ({message, disabled}) => {
+const ButtonBar = ({message, onSubmit, disabled}) => {
   const navigate = useNavigate();
   return (
     <div className="d-flex">
-      <button type="button" className="btn btn-outline-dark me-2" onClick={() => navigate(-1)}>Cancel</button>
-      <button type="submit" className="btn btn-primary me-auto" disabled={disabled}>Submit</button>
+      {/* <button type="button" className="btn btn-outline-dark me-2" onClick={() => navigate(-1)}>Cancel</button> */}
+      <button type="submit" className="btn btn-primary me-auto" 
+      onClick={(e)=>onSubmit(e)}>Submit</button>
       <span className="p-2">{message}</span>
     </div>
   );
@@ -66,7 +67,7 @@ const CourseEditor = ({id, course}) => {
       <InputField name="number" text="Number" state={state} change={change} />
       <InputField name="title" text="Title" state={state} change={change} />
       <InputField name="meets" text="Meets" state={state} change={change} />
-      <ButtonBar message={result?.message} />
+      <ButtonBar message={result?.message} onSubmit={submit}/>
     </form>
   )
 };
