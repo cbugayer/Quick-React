@@ -57,7 +57,10 @@ const CourseEditor = ({id, course}) => {
   const submit = (evt) => {
     evt.preventDefault();
     if (!state.errors) {
+      const valuesChanged = Object.keys(state.values).some(key => state.values[key] !== course[key]);
+      if (valuesChanged) {
       update(state.values);
+      }
     }
   };
 
