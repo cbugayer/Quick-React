@@ -24,5 +24,21 @@
   grid-template-columns: repeat(auto-fill, 14rem);
   grid-gap: 1rem;
   justify-content: center;
+}
 
+.edit {
+  color: blue;
+  height: 2rem;
+} 
+
+.card-footer {
+  padding: 0.6rem;
+}
+.footer-child1 {
+  float: left;
+}
+
+.footer-child2 {
+  padding: auto;
+  float: right;
 }

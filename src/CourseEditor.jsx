@@ -23,7 +23,7 @@ const validateCourseData = (key, val) => {
       console.log("val:", val);
         return Timespan(val)
         ? '' 
-        : 'must be a valid timespan, e.g. "MWF 10:00-10:50"';
+        : 'must be a valid timespan, e.g. "MTuWThF 10:00-10:50"';
     default: return '';
   }
 };
