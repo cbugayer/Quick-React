@@ -2,7 +2,7 @@ import './CourseCard.css';
 import Modal from './Modal';
 import { useState } from 'react';
 import Edit from './Edit';
-import { useAuthState } from '../utilities/firebase';
+import { useProfile } from '../utilities/profile';
 
 const CourseCard = ({id, 
                     course, 
@@ -11,12 +11,14 @@ const CourseCard = ({id,
                     toggleSelected, 
                     toggleUnselectables}) => {
     
-    const [auth] = useAuthState();
-    console.log(auth);
     const [openEdit, setOpenEdit] = useState(false);
     const openEditModal = () => setOpenEdit(true);
     const closeEditModal = () => setOpenEdit(false);
-                        
+
+    const [{user, isAdmin}, profileLoading, profileError] = useProfile();
+    if (profileError) return <h1>Error loading profile: {`${profileError}`}</h1>;
+    if (profileLoading) return <h1>Loading user profile</h1>;
+                      
 
     return (
         // if the course is selected, clicking will unselect it and call toggleUnselectables
@@ -37,7 +39,7 @@ const CourseCard = ({id,
                         { course.meets } 
                     </div>
                     <div className='footer-child2'>
-                        {auth != null && (
+                        {isAdmin && (
                             <div>
                                 <button className="btn btn-outline-secondary btn-block btn-sm" 
                                     onClick={(e) => {e.stopPropagation(); openEditModal()}}>Edit</button>

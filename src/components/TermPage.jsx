@@ -3,7 +3,7 @@ import TermSelector from "./TermSelector";
 import CourseCard from "./CourseCard";
 
 const Term = ({selection, courses, selected, unselectables, toggleSelected, toggleUnselectables}) => (
-  console.log("Unselectables:", unselectables),
+  // console.log("Unselectables:", unselectables),
     <div className="product-list"> 
         { courses.filter(course => course[1].term === selection)
         .map(course => (

@@ -17,7 +17,7 @@ const SelectedPage = ({courses}) => {
     ? selected.filter(x => x !== item)
     : [...selected, item]
   );
-  console.log('Selected courses:', selected);
+  // console.log('Selected courses:', selected);
 
   return (
     <div>
