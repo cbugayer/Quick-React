@@ -15,11 +15,9 @@ const CourseCard = ({id,
     const openEditModal = () => setOpenEdit(true);
     const closeEditModal = () => setOpenEdit(false);
 
-    const [{user, isAdmin}, profileLoading, profileError] = useProfile();
+    const [{user, isAdmin}, profileError] = useProfile();
     if (profileError) return <h1>Error loading profile: {`${profileError}`}</h1>;
-    if (profileLoading) return <h1>Loading user profile</h1>;
-                      
-
+    
     return (
         // if the course is selected, clicking will unselect it and call toggleUnselectables
         // if the course is unselectable, clicking will do nothing

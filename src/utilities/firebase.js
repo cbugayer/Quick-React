@@ -18,6 +18,35 @@ const firebaseConfig = {
 const firebase = initializeApp(firebaseConfig);
 const database = getDatabase(firebase);
 
+
+const createAdmin = (uid) => {
+  console.log('createAdmin', uid);
+  update(ref(database, `/admins/${uid}`),{ uid : uid});
+};
+
+const deleteAdmin = (uid) => {
+  console.log('deleteAdmin', uid);
+  update(ref(database, `/admins/${uid}`), null);
+}
+
+const seeAdmins = () => {
+  console.log('seeAdmins');
+  onValue(ref(database, '/admins'), (snapshot) => {
+    const data = snapshot.val();
+    console.log('data', data);
+  });
+}
+// TO CREATE OR DELETE ADMIN
+  // paste 'some-uid' into the function call below
+  // then uncomment the line below
+  // 
+// createAdmin('some-uid');
+// deleteAdmin('some-uid');
+
+// TO SEE ALL ADMINS
+  // uncomment the line below
+// seeAdmins();
+
 export const useDbData = (path) => {
   const [data, setData] = useState();
   const [error, setError] = useState(null);
