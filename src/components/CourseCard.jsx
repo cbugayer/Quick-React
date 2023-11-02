@@ -21,7 +21,7 @@ const CourseCard = ({id,
     return (
         // if the course is selected, clicking will unselect it and call toggleUnselectables
         // if the course is unselectable, clicking will do nothing
-        <div>
+        <div data-cy="course">
             <div className='product card m-1 p-2' onClick={() => 
                 {unselectables.includes(id)
                 ? null
